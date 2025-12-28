@@ -7,6 +7,8 @@ import CPRTopic from './components/CPRTopic';
 import ViralTopic from './components/ViralTopic';
 import DiureticTopic from './components/DiureticTopic';
 import HemostasisTopic from './components/HemostasisTopic';
+import SyntheticsTopic from './components/SyntheticsTopic';
+import Theme16Topic from './components/Theme16Topic';
 
 enum Topic {
   NONE = 'NONE',
@@ -17,7 +19,9 @@ enum Topic {
   CPR = 'CPR',
   VIRAL = 'VIRAL',
   DIURETIC = 'DIURETIC',
-  HEMOSTASIS = 'HEMOSTASIS'
+  HEMOSTASIS = 'HEMOSTASIS',
+  SYNTHETICS = 'SYNTHETICS',
+  THEME16 = 'THEME16'
 }
 
 const App: React.FC = () => {
@@ -41,6 +45,10 @@ const App: React.FC = () => {
         return <DiureticTopic onBack={() => setCurrentTopic(Topic.NONE)} />;
       case Topic.HEMOSTASIS:
         return <HemostasisTopic onBack={() => setCurrentTopic(Topic.NONE)} />;
+      case Topic.SYNTHETICS:
+        return <SyntheticsTopic onBack={() => setCurrentTopic(Topic.NONE)} />;
+      case Topic.THEME16:
+        return <Theme16Topic onBack={() => setCurrentTopic(Topic.NONE)} />;
       default:
         // Topic Selector Screen
         return (
@@ -50,7 +58,7 @@ const App: React.FC = () => {
              </h2>
              
              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-7xl px-4">
-                {/* Card Cardiovascular */}
+                {/* 1. Tema 9: Cardiovascular */}
                 <button 
                   onClick={() => setCurrentTopic(Topic.CARDIO)}
                   className="bg-white rounded-3xl p-6 shadow-2xl transform transition-all hover:-translate-y-4 hover:shadow-[0_20px_50px_rgba(0,0,0,0.3)] group relative overflow-hidden flex flex-col h-full min-h-[250px]"
@@ -68,97 +76,7 @@ const App: React.FC = () => {
                    </div>
                 </button>
 
-                {/* Card Inmunosupresores */}
-                <button 
-                  onClick={() => setCurrentTopic(Topic.IMMUNO)}
-                  className="bg-gradient-to-br from-cyan-500 to-teal-600 rounded-3xl p-6 shadow-2xl transform transition-all hover:-translate-y-4 hover:shadow-[0_20px_50px_rgba(0,0,0,0.3)] group relative overflow-hidden text-white border-2 border-cyan-300/30 flex flex-col h-full min-h-[250px]"
-                >
-                   <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
-                      <span className="text-8xl">🛡️</span>
-                   </div>
-                   <div className="relative z-10 text-left flex-1 flex flex-col">
-                      <div className="text-5xl mb-4 group-hover:scale-110 transition-transform inline-block">💉</div>
-                      <h3 className="text-2xl font-black text-cyan-50 mb-2">Tema 12: Inmuno</h3>
-                      <p className="text-cyan-100 text-sm md:text-base mb-6 flex-1">Autoinmunidad, Trasplantes y Glucocorticoides.</p>
-                      <div className="mt-auto inline-block bg-white text-teal-700 px-6 py-2 rounded-full font-bold group-hover:bg-cyan-50 text-center shadow-lg">
-                        Entrar ➔
-                      </div>
-                   </div>
-                </button>
-
-                {/* Card Oncología */}
-                <button 
-                  onClick={() => setCurrentTopic(Topic.ONCO)}
-                  className="bg-gradient-to-br from-blue-900 to-slate-900 rounded-3xl p-6 shadow-2xl transform transition-all hover:-translate-y-4 hover:shadow-[0_20px_50px_rgba(0,0,0,0.3)] group relative overflow-hidden text-white border-2 border-blue-500/30 flex flex-col h-full min-h-[250px]"
-                >
-                   <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
-                      <span className="text-8xl">🧬</span>
-                   </div>
-                   <div className="relative z-10 text-left flex-1 flex flex-col">
-                      <div className="text-5xl mb-4 group-hover:scale-110 transition-transform inline-block">☢️</div>
-                      <h3 className="text-2xl font-black text-blue-200 mb-2">Tema 13: Onco</h3>
-                      <p className="text-blue-100/70 text-sm md:text-base mb-6 flex-1">Antineoplásicos, Ciclo Celular y Toxicidad.</p>
-                      <div className="mt-auto inline-block bg-blue-500 text-white px-6 py-2 rounded-full font-bold group-hover:bg-blue-400 text-center">
-                        Entrar ➔
-                      </div>
-                   </div>
-                </button>
-
-                {/* Card Antibióticos */}
-                <button 
-                  onClick={() => setCurrentTopic(Topic.ANTIBIO)}
-                  className="bg-gradient-to-br from-yellow-400 to-orange-500 rounded-3xl p-6 shadow-2xl transform transition-all hover:-translate-y-4 hover:shadow-[0_20px_50px_rgba(0,0,0,0.3)] group relative overflow-hidden text-white border-2 border-yellow-300/30 flex flex-col h-full min-h-[250px]"
-                >
-                   <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
-                      <span className="text-8xl">💊</span>
-                   </div>
-                   <div className="relative z-10 text-left flex-1 flex flex-col">
-                      <div className="text-5xl mb-4 group-hover:scale-110 transition-transform inline-block">🦠</div>
-                      <h3 className="text-2xl font-black text-yellow-50 mb-2">Tema 14: Antibióticos</h3>
-                      <p className="text-yellow-100 text-sm md:text-base mb-6 flex-1">Betalactámicos, Bactericidas vs Bacteriostáticos.</p>
-                      <div className="mt-auto inline-block bg-white text-orange-600 px-6 py-2 rounded-full font-bold group-hover:bg-yellow-50 text-center shadow-lg">
-                        Entrar ➔
-                      </div>
-                   </div>
-                </button>
-
-                {/* Card Antivíricos */}
-                <button 
-                  onClick={() => setCurrentTopic(Topic.VIRAL)}
-                  className="bg-gradient-to-br from-emerald-600 to-lime-800 rounded-3xl p-6 shadow-2xl transform transition-all hover:-translate-y-4 hover:shadow-[0_20px_50px_rgba(0,0,0,0.3)] group relative overflow-hidden text-white border-2 border-emerald-400/30 flex flex-col h-full min-h-[250px]"
-                >
-                   <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
-                      <span className="text-8xl">☣️</span>
-                   </div>
-                   <div className="relative z-10 text-left flex-1 flex flex-col">
-                      <div className="text-5xl mb-4 group-hover:scale-110 transition-transform inline-block">🧪</div>
-                      <h3 className="text-2xl font-black text-emerald-100 mb-2">Tema 17: Antivíricos</h3>
-                      <p className="text-emerald-200/80 text-sm md:text-base mb-6 flex-1">Herpes, VIH, Gripe y COVID-19.</p>
-                      <div className="mt-auto inline-block bg-white text-emerald-700 px-6 py-2 rounded-full font-bold group-hover:bg-emerald-50 text-center shadow-lg">
-                        Entrar ➔
-                      </div>
-                   </div>
-                </button>
-
-                {/* Card RCP */}
-                <button 
-                  onClick={() => setCurrentTopic(Topic.CPR)}
-                  className="bg-gradient-to-br from-red-600 to-rose-800 rounded-3xl p-6 shadow-2xl transform transition-all hover:-translate-y-4 hover:shadow-[0_20px_50px_rgba(0,0,0,0.3)] group relative overflow-hidden text-white border-2 border-red-400/30 flex flex-col h-full min-h-[250px]"
-                >
-                   <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
-                      <span className="text-8xl">📢</span>
-                   </div>
-                   <div className="relative z-10 text-left flex-1 flex flex-col">
-                      <div className="text-5xl mb-4 group-hover:scale-110 transition-transform inline-block">🚨</div>
-                      <h3 className="text-2xl font-black text-red-100 mb-2">Tema 18: RCP</h3>
-                      <p className="text-red-200/80 text-sm md:text-base mb-6 flex-1">Adrenalina, Atropina, Antiarrítmicos y Urgencias.</p>
-                      <div className="mt-auto inline-block bg-white text-red-700 px-6 py-2 rounded-full font-bold group-hover:bg-red-50 text-center shadow-lg">
-                        Entrar ➔
-                      </div>
-                   </div>
-                </button>
-
-                {/* Card Diuréticos */}
+                {/* 2. Tema 10: Diuréticos */}
                 <button 
                   onClick={() => setCurrentTopic(Topic.DIURETIC)}
                   className="bg-gradient-to-br from-blue-600 to-cyan-700 rounded-3xl p-6 shadow-2xl transform transition-all hover:-translate-y-4 hover:shadow-[0_20px_50px_rgba(0,0,0,0.3)] group relative overflow-hidden text-white border-2 border-cyan-400/30 flex flex-col h-full min-h-[250px]"
@@ -176,7 +94,7 @@ const App: React.FC = () => {
                    </div>
                 </button>
 
-                {/* Card Hemostasia */}
+                {/* 3. Tema 11: Hemostasia */}
                 <button 
                   onClick={() => setCurrentTopic(Topic.HEMOSTASIS)}
                   className="bg-gradient-to-br from-rose-700 to-pink-900 rounded-3xl p-6 shadow-2xl transform transition-all hover:-translate-y-4 hover:shadow-[0_20px_50px_rgba(0,0,0,0.3)] group relative overflow-hidden text-white border-2 border-rose-500/30 flex flex-col h-full min-h-[250px]"
@@ -189,6 +107,132 @@ const App: React.FC = () => {
                       <h3 className="text-2xl font-black text-rose-100 mb-2">Tema 11: Hemostasia</h3>
                       <p className="text-rose-200/80 text-sm md:text-base mb-6 flex-1">Antiagregantes, Heparinas y Fibrinolíticos.</p>
                       <div className="mt-auto inline-block bg-white text-rose-800 px-6 py-2 rounded-full font-bold group-hover:bg-rose-50 text-center shadow-lg">
+                        Entrar ➔
+                      </div>
+                   </div>
+                </button>
+
+                {/* 4. Tema 12: Inmunosupresores */}
+                <button 
+                  onClick={() => setCurrentTopic(Topic.IMMUNO)}
+                  className="bg-gradient-to-br from-cyan-500 to-teal-600 rounded-3xl p-6 shadow-2xl transform transition-all hover:-translate-y-4 hover:shadow-[0_20px_50px_rgba(0,0,0,0.3)] group relative overflow-hidden text-white border-2 border-cyan-300/30 flex flex-col h-full min-h-[250px]"
+                >
+                   <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                      <span className="text-8xl">🛡️</span>
+                   </div>
+                   <div className="relative z-10 text-left flex-1 flex flex-col">
+                      <div className="text-5xl mb-4 group-hover:scale-110 transition-transform inline-block">💉</div>
+                      <h3 className="text-2xl font-black text-cyan-50 mb-2">Tema 12: Inmuno</h3>
+                      <p className="text-cyan-100 text-sm md:text-base mb-6 flex-1">Autoinmunidad, Trasplantes y Glucocorticoides.</p>
+                      <div className="mt-auto inline-block bg-white text-teal-700 px-6 py-2 rounded-full font-bold group-hover:bg-cyan-50 text-center shadow-lg">
+                        Entrar ➔
+                      </div>
+                   </div>
+                </button>
+
+                {/* 5. Tema 13: Oncología */}
+                <button 
+                  onClick={() => setCurrentTopic(Topic.ONCO)}
+                  className="bg-gradient-to-br from-blue-900 to-slate-900 rounded-3xl p-6 shadow-2xl transform transition-all hover:-translate-y-4 hover:shadow-[0_20px_50px_rgba(0,0,0,0.3)] group relative overflow-hidden text-white border-2 border-blue-500/30 flex flex-col h-full min-h-[250px]"
+                >
+                   <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                      <span className="text-8xl">🧬</span>
+                   </div>
+                   <div className="relative z-10 text-left flex-1 flex flex-col">
+                      <div className="text-5xl mb-4 group-hover:scale-110 transition-transform inline-block">☢️</div>
+                      <h3 className="text-2xl font-black text-blue-200 mb-2">Tema 13: Onco</h3>
+                      <p className="text-blue-100/70 text-sm md:text-base mb-6 flex-1">Antineoplásicos, Ciclo Celular y Toxicidad.</p>
+                      <div className="mt-auto inline-block bg-blue-500 text-white px-6 py-2 rounded-full font-bold group-hover:bg-blue-400 text-center">
+                        Entrar ➔
+                      </div>
+                   </div>
+                </button>
+
+                {/* 6. Tema 14: Antibióticos */}
+                <button 
+                  onClick={() => setCurrentTopic(Topic.ANTIBIO)}
+                  className="bg-gradient-to-br from-yellow-400 to-orange-500 rounded-3xl p-6 shadow-2xl transform transition-all hover:-translate-y-4 hover:shadow-[0_20px_50px_rgba(0,0,0,0.3)] group relative overflow-hidden text-white border-2 border-yellow-300/30 flex flex-col h-full min-h-[250px]"
+                >
+                   <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                      <span className="text-8xl">💊</span>
+                   </div>
+                   <div className="relative z-10 text-left flex-1 flex flex-col">
+                      <div className="text-5xl mb-4 group-hover:scale-110 transition-transform inline-block">🦠</div>
+                      <h3 className="text-2xl font-black text-yellow-50 mb-2">Tema 14: Antibióticos</h3>
+                      <p className="text-yellow-100 text-sm md:text-base mb-6 flex-1">Betalactámicos, Bactericidas vs Bacteriostáticos.</p>
+                      <div className="mt-auto inline-block bg-white text-orange-600 px-6 py-2 rounded-full font-bold group-hover:bg-yellow-50 text-center shadow-lg">
+                        Entrar ➔
+                      </div>
+                   </div>
+                </button>
+
+                {/* 7. Tema 15: Sintéticos */}
+                <button 
+                  onClick={() => setCurrentTopic(Topic.SYNTHETICS)}
+                  className="bg-gradient-to-br from-amber-500 to-orange-700 rounded-3xl p-6 shadow-2xl transform transition-all hover:-translate-y-4 hover:shadow-[0_20px_50px_rgba(0,0,0,0.3)] group relative overflow-hidden text-white border-2 border-amber-400/30 flex flex-col h-full min-h-[250px]"
+                >
+                   <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                      <span className="text-8xl">⚗️</span>
+                   </div>
+                   <div className="relative z-10 text-left flex-1 flex flex-col">
+                      <div className="text-5xl mb-4 group-hover:scale-110 transition-transform inline-block">🧪</div>
+                      <h3 className="text-2xl font-black text-amber-100 mb-2">Tema 15: Sintéticos</h3>
+                      <p className="text-amber-200/80 text-sm md:text-base mb-6 flex-1">Quinolonas, Sulfamidas y Nitrofurantoína.</p>
+                      <div className="mt-auto inline-block bg-white text-orange-800 px-6 py-2 rounded-full font-bold group-hover:bg-amber-50 text-center shadow-lg">
+                        Entrar ➔
+                      </div>
+                   </div>
+                </button>
+
+                {/* 8. Tema 16: Aminoglucósidos+ */}
+                <button 
+                  onClick={() => setCurrentTopic(Topic.THEME16)}
+                  className="bg-gradient-to-br from-purple-600 to-fuchsia-800 rounded-3xl p-6 shadow-2xl transform transition-all hover:-translate-y-4 hover:shadow-[0_20px_50px_rgba(0,0,0,0.3)] group relative overflow-hidden text-white border-2 border-purple-400/30 flex flex-col h-full min-h-[250px]"
+                >
+                   <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                      <span className="text-8xl">🧬</span>
+                   </div>
+                   <div className="relative z-10 text-left flex-1 flex flex-col">
+                      <div className="text-5xl mb-4 group-hover:scale-110 transition-transform inline-block">🧪</div>
+                      <h3 className="text-2xl font-black text-purple-100 mb-2">Tema 16: Otros ATBs</h3>
+                      <p className="text-purple-200/80 text-sm md:text-base mb-6 flex-1">Aminoglucósidos, Glucopéptidos y Macrólidos.</p>
+                      <div className="mt-auto inline-block bg-white text-purple-800 px-6 py-2 rounded-full font-bold group-hover:bg-purple-50 text-center shadow-lg">
+                        Entrar ➔
+                      </div>
+                   </div>
+                </button>
+
+                {/* 9. Tema 17: Antivíricos */}
+                <button 
+                  onClick={() => setCurrentTopic(Topic.VIRAL)}
+                  className="bg-gradient-to-br from-emerald-600 to-lime-800 rounded-3xl p-6 shadow-2xl transform transition-all hover:-translate-y-4 hover:shadow-[0_20px_50px_rgba(0,0,0,0.3)] group relative overflow-hidden text-white border-2 border-emerald-400/30 flex flex-col h-full min-h-[250px]"
+                >
+                   <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                      <span className="text-8xl">☣️</span>
+                   </div>
+                   <div className="relative z-10 text-left flex-1 flex flex-col">
+                      <div className="text-5xl mb-4 group-hover:scale-110 transition-transform inline-block">🧪</div>
+                      <h3 className="text-2xl font-black text-emerald-100 mb-2">Tema 17: Antivíricos</h3>
+                      <p className="text-emerald-200/80 text-sm md:text-base mb-6 flex-1">Herpes, VIH, Gripe y COVID-19.</p>
+                      <div className="mt-auto inline-block bg-white text-emerald-700 px-6 py-2 rounded-full font-bold group-hover:bg-emerald-50 text-center shadow-lg">
+                        Entrar ➔
+                      </div>
+                   </div>
+                </button>
+
+                {/* 10. Tema 18: RCP */}
+                <button 
+                  onClick={() => setCurrentTopic(Topic.CPR)}
+                  className="bg-gradient-to-br from-red-600 to-rose-800 rounded-3xl p-6 shadow-2xl transform transition-all hover:-translate-y-4 hover:shadow-[0_20px_50px_rgba(0,0,0,0.3)] group relative overflow-hidden text-white border-2 border-red-400/30 flex flex-col h-full min-h-[250px]"
+                >
+                   <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                      <span className="text-8xl">📢</span>
+                   </div>
+                   <div className="relative z-10 text-left flex-1 flex flex-col">
+                      <div className="text-5xl mb-4 group-hover:scale-110 transition-transform inline-block">🚨</div>
+                      <h3 className="text-2xl font-black text-red-100 mb-2">Tema 18: RCP</h3>
+                      <p className="text-red-200/80 text-sm md:text-base mb-6 flex-1">Adrenalina, Atropina, Antiarrítmicos y Urgencias.</p>
+                      <div className="mt-auto inline-block bg-white text-red-700 px-6 py-2 rounded-full font-bold group-hover:bg-red-50 text-center shadow-lg">
                         Entrar ➔
                       </div>
                    </div>
