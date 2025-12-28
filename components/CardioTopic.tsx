@@ -4,6 +4,7 @@ import ConceptMap from './ConceptMap';
 import Simulation from './Simulation';
 import Quiz from './Quiz';
 import Glossary from './Glossary';
+import CardioInfographic from './CardioInfographic';
 
 interface Props {
     onBack: () => void;
@@ -22,6 +23,8 @@ const CardioTopic: React.FC<Props> = ({ onBack }) => {
         return <Quiz />;
       case GamePhase.GLOSSARY:
         return <Glossary />;
+      case GamePhase.INFOGRAPHIC:
+        return <CardioInfographic />;
       default:
         return (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto animate-fade-in-up">
@@ -29,6 +32,12 @@ const CardioTopic: React.FC<Props> = ({ onBack }) => {
               <div className="text-5xl mb-4 group-hover:scale-110 transition-transform">🧠</div>
               <h2 className="text-2xl font-black">Mapa Mental Pareto</h2>
               <p className="opacity-90 mt-2">Entiende el 80% del tema en el 20% del tiempo.</p>
+            </button>
+
+            <button onClick={() => setPhase(GamePhase.INFOGRAPHIC)} className="p-8 bg-purple-600 text-white rounded-3xl shadow-xl hover:bg-purple-700 transform hover:-translate-y-2 transition-all group">
+               <div className="text-5xl mb-4 group-hover:scale-110 transition-transform">📊</div>
+              <h2 className="text-2xl font-black">Guía Rápida</h2>
+              <p className="opacity-90 mt-2">Infografía visual de grupos farmacológicos.</p>
             </button>
 
             <button onClick={() => setPhase(GamePhase.SIMULATION)} className="p-8 bg-blue-500 text-white rounded-3xl shadow-xl hover:bg-blue-600 transform hover:-translate-y-2 transition-all group">
@@ -43,7 +52,7 @@ const CardioTopic: React.FC<Props> = ({ onBack }) => {
               <p className="opacity-90 mt-2">Test gamificado para probar tu conocimiento.</p>
             </button>
 
-            <button onClick={() => setPhase(GamePhase.GLOSSARY)} className="p-8 bg-pink-500 text-white rounded-3xl shadow-xl hover:bg-pink-600 transform hover:-translate-y-2 transition-all group">
+            <button onClick={() => setPhase(GamePhase.GLOSSARY)} className="p-8 bg-pink-500 text-white rounded-3xl shadow-xl hover:bg-pink-600 transform hover:-translate-y-2 transition-all group md:col-span-2">
                <div className="text-5xl mb-4 group-hover:scale-110 transition-transform">🗣️</div>
               <h2 className="text-2xl font-black">Trabalenguas</h2>
               <p className="opacity-90 mt-2">Glosario divertido para memorizar fármacos.</p>
