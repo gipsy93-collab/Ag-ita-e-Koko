@@ -5,6 +5,8 @@ import AntibioticTopic from './components/AntibioticTopic';
 import ImmunoTopic from './components/ImmunoTopic';
 import CPRTopic from './components/CPRTopic';
 import ViralTopic from './components/ViralTopic';
+import DiureticTopic from './components/DiureticTopic';
+import HemostasisTopic from './components/HemostasisTopic';
 
 enum Topic {
   NONE = 'NONE',
@@ -13,7 +15,9 @@ enum Topic {
   ANTIBIO = 'ANTIBIO',
   IMMUNO = 'IMMUNO',
   CPR = 'CPR',
-  VIRAL = 'VIRAL'
+  VIRAL = 'VIRAL',
+  DIURETIC = 'DIURETIC',
+  HEMOSTASIS = 'HEMOSTASIS'
 }
 
 const App: React.FC = () => {
@@ -33,6 +37,10 @@ const App: React.FC = () => {
         return <CPRTopic onBack={() => setCurrentTopic(Topic.NONE)} />;
       case Topic.VIRAL:
         return <ViralTopic onBack={() => setCurrentTopic(Topic.NONE)} />;
+      case Topic.DIURETIC:
+        return <DiureticTopic onBack={() => setCurrentTopic(Topic.NONE)} />;
+      case Topic.HEMOSTASIS:
+        return <HemostasisTopic onBack={() => setCurrentTopic(Topic.NONE)} />;
       default:
         // Topic Selector Screen
         return (
@@ -145,6 +153,42 @@ const App: React.FC = () => {
                       <h3 className="text-2xl font-black text-red-100 mb-2">Tema 18: RCP</h3>
                       <p className="text-red-200/80 text-sm md:text-base mb-6 flex-1">Adrenalina, Atropina, Antiarrítmicos y Urgencias.</p>
                       <div className="mt-auto inline-block bg-white text-red-700 px-6 py-2 rounded-full font-bold group-hover:bg-red-50 text-center shadow-lg">
+                        Entrar ➔
+                      </div>
+                   </div>
+                </button>
+
+                {/* Card Diuréticos */}
+                <button 
+                  onClick={() => setCurrentTopic(Topic.DIURETIC)}
+                  className="bg-gradient-to-br from-blue-600 to-cyan-700 rounded-3xl p-6 shadow-2xl transform transition-all hover:-translate-y-4 hover:shadow-[0_20px_50px_rgba(0,0,0,0.3)] group relative overflow-hidden text-white border-2 border-cyan-400/30 flex flex-col h-full min-h-[250px]"
+                >
+                   <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                      <span className="text-8xl">💧</span>
+                   </div>
+                   <div className="relative z-10 text-left flex-1 flex flex-col">
+                      <div className="text-5xl mb-4 group-hover:scale-110 transition-transform inline-block">🚽</div>
+                      <h3 className="text-2xl font-black text-cyan-100 mb-2">Tema 10: Diuréticos</h3>
+                      <p className="text-cyan-200/80 text-sm md:text-base mb-6 flex-1">Furosemida, Tiazidas, Ahorradores de K+ y Osmóticos.</p>
+                      <div className="mt-auto inline-block bg-white text-blue-700 px-6 py-2 rounded-full font-bold group-hover:bg-blue-50 text-center shadow-lg">
+                        Entrar ➔
+                      </div>
+                   </div>
+                </button>
+
+                {/* Card Hemostasia */}
+                <button 
+                  onClick={() => setCurrentTopic(Topic.HEMOSTASIS)}
+                  className="bg-gradient-to-br from-rose-700 to-pink-900 rounded-3xl p-6 shadow-2xl transform transition-all hover:-translate-y-4 hover:shadow-[0_20px_50px_rgba(0,0,0,0.3)] group relative overflow-hidden text-white border-2 border-rose-500/30 flex flex-col h-full min-h-[250px]"
+                >
+                   <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                      <span className="text-8xl">🩸</span>
+                   </div>
+                   <div className="relative z-10 text-left flex-1 flex flex-col">
+                      <div className="text-5xl mb-4 group-hover:scale-110 transition-transform inline-block">🩹</div>
+                      <h3 className="text-2xl font-black text-rose-100 mb-2">Tema 11: Hemostasia</h3>
+                      <p className="text-rose-200/80 text-sm md:text-base mb-6 flex-1">Antiagregantes, Heparinas y Fibrinolíticos.</p>
+                      <div className="mt-auto inline-block bg-white text-rose-800 px-6 py-2 rounded-full font-bold group-hover:bg-rose-50 text-center shadow-lg">
                         Entrar ➔
                       </div>
                    </div>
